@@ -10,7 +10,6 @@ pip-selfcheck.json
 migrations
 media
 node_modules
-package.json
 gulpfile.js
 db.sqlite3
 
