@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="{{ LANGUAGE_CODE }}">
+	<title>
+		{% block head_title %} Login {% endblock head_title %}
+	</title>
+</head>
+<body>
+
+
+<form class="register_form" method="post" action="{% url 'auth:login' %}"> <!-- Esta parte tiene que coincidir con el name del loginView -->
+	{% csrf_token %}
+
+	{{ form.as_p }}
+
+
+	<input type="submit" value="login" />
+	<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+
+</body>
+
+</html>

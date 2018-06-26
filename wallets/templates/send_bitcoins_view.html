@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="{{ LANGUAGE_CODE }}">
+	<title>
+		{% block head_title %} Send Bitcoins {% endblock head_title %}
+	</title>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+
+<h1>Send Bitcoins</h1>
+<h3>{{ wallet.profile.user.username }} Wallet !!!</h3>
+<h3>{{ wallet.receiving_address }}</h3>
+<p>{{ wallet.get_balance}}</p>
+<!-- <p>{{ wallet.reg_private }}</p>
+<p>{{ wallet.private }}</p>
+<p>{{ priv }}</p> -->
+
+
+<form class="register_form" method="post" action="{% url 'wallets:send' %}"> <!-- Esta parte tiene que coincidir con el name del loginView -->
+	{% csrf_token %}
+
+	{% if messages %}
+		{% for message in messages %}{{ message }}{% endfor %}
+			
+	{% endif %}
+
+	{{ form.as_p }}
+
+	<input type="submit" value="Send" />
+
+</form>
+
+
+</body>
+
+</html>

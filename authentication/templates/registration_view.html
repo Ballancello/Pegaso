@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="{{ LANGUAGE_CODE }}">
+	<title>
+		{% block head_title %} Pegaso.com {% endblock head_title %}
+	</title>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+
+
+<form class="register_form" method="post" action="{% url 'auth:register' %}"> <!-- Esta parte tiene que coincidir con el name del loginView -->
+	{% csrf_token %}
+
+	{% if messages %}
+		{% for message in messages %}{{ message }}{% endfor %}
+			
+	{% endif %}
+
+	{{ form.as_p }}
+
+	<div class="g-recaptcha" data-sitekey="6LdtTV8UAAAAAG4w5a3YeMRAuYholbz2HPZAkY0G"></div>
+	<input type="submit" value="login" />
+	<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="{{ LANGUAGE_CODE }}">
+	<title>
+		{% block head_title %} Send Bitcoins {% endblock head_title %}
+	</title>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+
+	{% if messages %}
+		{% for message in messages %}{{ message }}{% endfor %}
+			
+	{% endif %}
+
+<h1>Transactions</h1>
+<h3>{{ wallet.profile.user.username }} Wallet !!!</h3>
+<h3>{{ wallet.receiving_address }}</h3>
+<p>{{ wallet.get_balance }}</p>
+<p>Unconfirmed: {{unconfirmed}}</p>
+<p>Final Transactions Number: {{final_n_tx}}</p>
+<p>Unconfirmed Transactions: {{unconfirmed_n}}</p>
+
+
+{% for tx in transactions  %}
+
+	<ul>
+		<li>{{ tx.is_receiver }}</li>
+		<li>{{ tx.value }}</li>
+		<li>{{ tx.fees }}</li>
+		<li>{{ tx.sender }}</li>
+		<li>{{ tx.receiver }}</li>
+
+
+	</ul>
+
+
+{% endfor %}
+
+<!-- <h3>{{ wallet.profile.user.username }} Wallet !!!</h3>
+<h3>{{ wallet.receiving_address }}</h3>
+<p>{{ wallet.get_balance}}</p>
+<!-- <p>{{ wallet.reg_private }}</p>
+<p>{{ wallet.private }}</p>
+<p>{{ priv }}</p> -->
+ <!-- --> 
+
+
+</body>
+
+</html>
